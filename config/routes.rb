@@ -1,5 +1,12 @@
 Clippy::Application.routes.draw do
-  devise_for :users
+  get "users/index"
+
+  devise_for :users do
+    get "/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
+    get "/sign_in" => "devise/sessions#new", :as => :new_user_session
+  end
+  
+  resources :users
 
   get "home/index"
 
