@@ -1,0 +1,5 @@
+<li>
+	<%= link_to clip.url %>
+	<p><%= clip.content %></p>
+	<time class="timestamp">Posted <%= time_ago_in_words(clip.created_at) %> ago.</time>
+</li>
