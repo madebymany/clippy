@@ -1,5 +1,4 @@
 Clippy::Application.routes.draw do
-  resources :clips
 
   get "users/index"
 
@@ -8,6 +7,7 @@ Clippy::Application.routes.draw do
     get "/sign_in" => "devise/sessions#new", :as => :new_user_session
   end
   
+  resources :clips, only: [:create, :destroy]
   resources :users
   
   #match '/auth/:provider/callback', to: 'sessions#create'

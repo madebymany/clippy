@@ -1,2 +1,9 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>New Clip</h1>
+<%= render 'clips/form' %>
+
+
+<% if @feed_items.any? %>
+  <ol class="clips">
+    <%= render partial: 'shared/feed_item', collection: @feed_items %>
+  </ol>
+<% end %>

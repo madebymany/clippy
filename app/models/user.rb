@@ -11,4 +11,9 @@ class User < ActiveRecord::Base
   
   has_many :clips, dependent: :destroy
   
+  def feed
+    # This is preliminary. See "Following users" for the full implementation.
+    Clip.where("user_id = ?", id)
+  end
+  
 end
