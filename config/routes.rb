@@ -1,4 +1,5 @@
 Clippy::Application.routes.draw do
+
   get "users/index"
 
   devise_for :users do
@@ -9,12 +10,14 @@ Clippy::Application.routes.draw do
   # Sample resource route within a namespace:
   namespace :api do
     namespace :v1  do
-      post :clips
-      get :clips
+      resources :clips, only: [:create, :destroy, :index]
     end
   end
-  
+
+  resources :clips, only: [:create, :destroy]
   resources :users
+  
+  #match '/auth/:provider/callback', to: 'sessions#create'
 
   get "home/index"
 

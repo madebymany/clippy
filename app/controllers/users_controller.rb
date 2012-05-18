@@ -4,4 +4,9 @@ class UsersController < ApplicationController
   
   def index
   end
+  
+  def show
+    @user = User.find(params[:id])
+    @microposts = @user.clips
+  end
 end
