@@ -14,18 +14,14 @@ Clippy::Application.routes.draw do
     namespace :v1  do
       resources :users, :only => [:show] do
         member do
-          get 'stream'
+          get 'feed'
         end
       end
     end
   end
 
   resources :clips, :only =>[:create, :destroy]
-  resources :users, :only => [:show] do
-    member do
-      get 'stream'
-    end
-  end
+  resources :users, :only => [:show]
 
   get "home/index"
 
