@@ -10,6 +10,7 @@ gem 'heroku'
 gem 'thin'
 gem 'devise'
 gem 'omniauth'
+gem "friendly_id", "~> 4.0.0"
 
 
 # Gems used only for assets and not required

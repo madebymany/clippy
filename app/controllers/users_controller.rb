@@ -7,6 +7,6 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @microposts = @user.clips
+    @clips = @user.clips
   end
 end
