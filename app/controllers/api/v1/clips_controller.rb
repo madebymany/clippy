@@ -1,7 +1,4 @@
-class Api::V1::ClipsController < ApplicationController
-  
-  before_filter :authenticate_user!
-  before_filter :correct_user,   only: :destroy
+class Api::V1::ClipsController < Api::V1::BaseController
   
   def index
     @clips = Clip.all
@@ -36,11 +33,5 @@ class Api::V1::ClipsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
-  private
 
-    def correct_user
-      @clip = current_user.clips.find_by_id(params[:id])
-      redirect_to root_path if @clip.nil?
-    end
 end

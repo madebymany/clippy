@@ -13,7 +13,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
 
-gem "twitter_oauth", "~> 0.4.3"
+gem "oauth-plugin", ">= 0.4.0.pre1"
 
 gem "friendly_id", "~> 4.0.0"
 

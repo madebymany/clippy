@@ -1,29 +1,76 @@
+
 {
   "name": "Clippy",
   "version": "0.0.1",
-  "manifest_version": 2,
-  "description": "For clipping bits of teh internetz",
-  "browser_action": {
-    "default_icon": "assets/images/icon.png"
-  },
-	"icons": {
+  "description": "Shows a list of your favorite music according to facebook. OAuth 2.0 Extension Demo",
+  "icons": {
     "16": "assets/images/icon-small.png",
     "23": "assets/images/icon.png"
   },
-	"content_security_policy": "script-src 'self' https://twitter.com; object-src 'self'",
+  "browser_action": {
+    "default_title": "OAuth 2.0",
+    "default_icon": "assets/images/icon.png",
+    "popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+			"matches": ["http://clippitapp.com:3000/robots.txt*"],
+	    "js": ["oauth2/oauth2_inject.js"],
+	    "run_at": "document_start"
+    }
+  ],
   "permissions": [
-		"tabs",
+    "tabs",
 	  "contextMenus",
-		"http://clippitapp.com:3000/",
-		"https://api.twitter.com/oauth/request_token",
-	  "https://api.twitter.com/oauth/authorize", 
-		"https://api.twitter.com/oauth/access_token"
+		"http://clippitapp.com:3000/"
   ],
 	"background": {
     "scripts": [
-      "assets/javascripts/chrome_ex_oauthsimple.js",
-      "assets/javascripts/chrome_ex_oauth.js",
+			"oauth2/oauth2.js",
       "assets/javascripts/background.js"
-    ]
+    ],
+		"background": {
+	    "page": "background.html"
+	  }
   }
 }
+
+
+// {
+//   "name": "Clippy",
+//   "version": "0.0.1",
+//   "manifest_version": 2,
+//   "description": "For clipping bits of teh internetz",
+//   "browser_action": {
+//     "default_icon": "assets/images/icon.png",
+//     "default_title": "OAuth 2.0",
+//     "popup": "popup.html"
+//   },
+// 	"icons": {
+//     "16": "assets/images/icon-small.png",
+//     "23": "assets/images/icon.png"
+//   },
+// 	//"content_security_policy": "script-src 'self' https://twitter.com; object-src 'self'",
+//   "permissions": [
+// 		"http://clippitapp.com:3000/oauth/access_token",
+// 		"tabs",
+// 	  "contextMenus",
+// 		"http://clippitapp.com:3000/"
+//   ],
+// 	// "background": {
+// 	//     "scripts": [
+// 	// 			"oauth2/oauth2.js",
+// 	//       "assets/javascripts/background.js"
+// 	//     ],
+// 	// 		"background": {
+// 	// 	    "page": "background.html"
+// 	// 	  }
+// 	//   },
+// 	"content_scripts": [
+// 	  {
+// 	    "matches": ["http://clippitapp.com:3000/robots.txt*"],
+// 	    "js": ["oauth2/oauth2_inject.js"],
+// 	    "run_at": "document_start"
+// 	  }
+// 	]
+// }

@@ -1,9 +1,4 @@
-class Api::V1::UsersController < ApplicationController
-  
-  respond_to :json
-  
-  before_filter :authenticate_user!
-  before_filter :correct_user,   only: :destroy
+class Api::V1::UsersController < Api::V1::BaseController
   
   def show
     render :json => User.find(params[:id]).to_json(:except => [ :user_id, :email ]) #, :include => { :user => { :only => :username }} ) #, :callback => params[:callback]

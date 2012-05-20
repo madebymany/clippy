@@ -15,12 +15,13 @@ class User < ActiveRecord::Base
   has_many :clips, dependent: :destroy
   has_many :authentications
   
+  has_many :client_applications
+  has_many :tokens, :class_name=>"Oauth2Token",:order=>"authorized_at desc",:include=>[:client_application]
+  
   validates_presence_of :username
   validates_uniqueness_of :username
   validates_length_of :username, :within => 3..100, :on => :create, :message => "must be present"
   validates_format_of :username, :with => /^[A-Za-z\d_\-\0..9]+$/, :message => "can only contain characters, numbers and _'s"
-  
-  #before_save :ensure_authentication_token
   
   def feed
     # This is preliminary. See "Following users" for the full implementation.
