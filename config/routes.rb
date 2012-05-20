@@ -1,10 +1,8 @@
 Clippy::Application.routes.draw do
 
-  resources :profile, :only => [:edit, :update]
-
-  #get "users/index"
-
-  devise_for :users do
+  resources :authentications
+  
+  devise_for :users, :controllers => { :registrations => 'registrations' } do
     get "/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
     get "/sign_in" => "devise/sessions#new", :as => :new_user_session
   end
@@ -15,13 +13,19 @@ Clippy::Application.routes.draw do
       resources :users, :only => [:show] do
         member do
           get 'feed'
+          post 'clip'
         end
       end
+      resources :clips
     end
   end
 
   resources :clips, :only =>[:create, :destroy]
   resources :users, :only => [:show]
+  
+  match '/auth/:provider/callback', to: 'authentications#create'
+  
+  match "/signout" => "sessions#destroy", :as => :signout
 
   get "home/index"
 

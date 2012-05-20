@@ -16,6 +16,13 @@ class Api::V1::UsersController < ApplicationController
     render :json => @feed_items.to_json(:except => [ :user_id, :updated_at ]) #, :include => { :user => { :only => :username }} ) #, :callback => params[:callback]
   end
   
+  def create
+    @clips = current_user.clips.build
+    respond_to do |format|
+      format.json { render json: @clips }
+    end
+  end
+  
   def clips
     @clips = current_user.clips.build
     respond_to do |format|

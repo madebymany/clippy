@@ -9,7 +9,12 @@ gem 'pg'
 gem 'heroku'
 gem 'thin'
 gem 'devise'
+
 gem 'omniauth'
+gem 'omniauth-twitter'
+
+gem "twitter_oauth", "~> 0.4.3"
+
 gem "friendly_id", "~> 4.0.0"
 
 

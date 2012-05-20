@@ -1,4 +1,4 @@
-class ClipsController < ApplicationController
+class Api::V1::ClipsController < ApplicationController
   
   before_filter :authenticate_user!
   before_filter :correct_user,   only: :destroy
@@ -13,8 +13,6 @@ class ClipsController < ApplicationController
   end
 
   def create
-    puts "*******"
-    puts request.inspect
     @clip = current_user.clips.build(params[:clip])
 
     respond_to do |format|
