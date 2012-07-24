@@ -1,6 +1,6 @@
 class Api::V1::BaseController < ApplicationController
   
-  oauthenticate :interactive=>false
+  #oauthenticate :interactive=>false
   respond_to :json
   
   #before_filter :authenticate_user!

@@ -13,7 +13,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
 
-gem "oauth-plugin", ">= 0.4.0.pre1"
+gem 'oauth2-provider', :require => 'oauth2/provider', :git => 'git://github.com/songkick/oauth2-provider'
 
 gem "friendly_id", "~> 4.0.0"
 
